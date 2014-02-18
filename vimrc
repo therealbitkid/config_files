@@ -1,7 +1,7 @@
 " Following lines added by drush vimrc-install on Mon, 24 Jun 2013 09:00:13 +0000.
 set nocompatible
-call pathogen#infect('/Users/jamn/.drush/vimrc/bundle')
-call pathogen#infect('/Users/jamn/.vim/bundle')
+call pathogen#infect('~/.drush/vimrc/bundle')
+call pathogen#infect('~/.vim/bundle')
 " End of vimrc-install additions.
 
 "call pathogen#infect()
