@@ -123,14 +123,15 @@ function! OpenPhpFunction (keyword)
   exe 'split'
   exe 'enew'
   exe "set buftype=nofile"
-  exe 'silent r!lynx -dump -nolist http://www.php.net/manual/en/print/function.'.proc_keyword.'.php'
+  exe 'silent r!lynx -dump -nolist http://www.php.net/manual/en/function.'.proc_keyword.'.php'
   exe 'norm gg'
-  exe 'call search ("' . a:keyword .'")'
+  exe 'call search ("^' . a:keyword .'")'
+  exe 'norm k'
   exe 'norm dgg'
   exe 'call search("User Contributed Notes")'
   exe 'norm dGgg'
 endfunction
-au FileType php map K :call OpenPhpFunction('<C-r><C-w>')<CR>
+au FileType php map <c-K> :call OpenPhpFunction('<C-r><C-w>')<CR>
 
 
 nnoremap <F3> :NumbersToggle<CR>
@@ -153,9 +154,12 @@ Bundle 'scrooloose/nerdcommenter'
 "Bundle 'joonty/vdebug.git'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'terryma/vim-smooth-scroll'
+Bundle 'terryma/vim-expand-region'
 Bundle 'mihaifm/vimpanel'
 Bundle 'sjl/gundo.vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'bling/vim-airline'
 
 filetype plugin indent on     " required!
 
@@ -173,3 +177,11 @@ nmap <C-Up> ddkP
 nmap <C-Down> ddp
 
 nnoremap <F5> :GundoToggle<CR>
+
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 25, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 25, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 25, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 25, 4)<CR>
+
+map K <Plug>(expand_region_expand)
+map J <Plug>(expand_region_shrink)
