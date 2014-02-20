@@ -160,6 +160,7 @@ Bundle 'mihaifm/vimpanel'
 Bundle 'sjl/gundo.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'bling/vim-airline'
+Bundle 'myusuf3/numbers'
 
 filetype plugin indent on     " required!
 
