@@ -16,7 +16,8 @@ syntax on
 "endif
 
 colorscheme solarized
-set gfn=Source\ Code\ Pro\ Semibold:h14
+"set gfn=Source\ Code\ Pro\ for\ Powerline\ Light:h13
+set guifont=Source\ Code\ Pro\ for\ Powerline:h13
 
 let mapleader = ","
 
@@ -51,8 +52,10 @@ set dir=/tmp//
 autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 
-map <D-S-right> gt
-map <D-S-left> gT
+"map <D-S-right> gt
+"map <D-S-left> gT
+map <D-S-right> :bn<CR>
+map <D-S-left> :bp<CR>
 map <D-1> 1gt
 map <D-2> 2gt
 map <D-3> 3gt
@@ -177,12 +180,19 @@ highlight Normal term=bold cterm=NONE ctermfg=White ctermbg=Black
 nmap <C-Up> ddkP
 nmap <C-Down> ddp
 
+" Gundo settings
 nnoremap <F5> :GundoToggle<CR>
 
+" Smooth scroll settings
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 25, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 25, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 25, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 25, 4)<CR>
 
+" Expand region settings
 map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
+
+" Vim airline settings
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
