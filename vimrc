@@ -47,6 +47,7 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 set backupdir=/tmp//
 set directory=/tmp//
 set dir=/tmp//
+set shell=zsh
 
 " Remove trailing whitespaces and ^M chars
 autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
@@ -163,7 +164,7 @@ Bundle 'mihaifm/vimpanel'
 Bundle 'sjl/gundo.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'bling/vim-airline'
-Bundle 'myusuf3/numbers'
+Bundle 'myusuf3/numbers.vim'
 
 filetype plugin indent on     " required!
 
