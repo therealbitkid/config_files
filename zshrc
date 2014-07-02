@@ -81,16 +81,4 @@ zstyle -e ':completion:*:ssh:*' hosts 'reply=($(sed -e "/^#/d" -e "s/ .*\$//" -e
 export PATH=:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 export SVN_EDITOR=vim
 
-shorturl(){ curl --url "http://metamark.net/api/rest/simple?long_url=$*" }
-
-fpath=(~/drush_zsh/zsh $fpath)
-autoload -U compinit
-compinit -i
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:/opt/drush
-
-tnot () { "$@" && terminal-notifier -message "$( echo $@ ) returned $?" -title "Command $HISTCMD Completed" >/dev/null ; }
-
-source ~/.zsh/git_prompt.zsh
-export PATH="$(brew --prefix josegonzalez/php/php53)/bin:$PATH"
+# source ~/.zsh/git_prompt.zsh
