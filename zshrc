@@ -48,8 +48,8 @@ alias la="ls -laG"
 alias ls="ls -G"
 alias rm="rm -v"
 alias rgrep='grep -iR --color=auto -n'
-alias vi=mvim
-alias vim=mvim
+alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 # History completion
 autoload -U history-search-end
