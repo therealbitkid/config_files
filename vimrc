@@ -1,11 +1,10 @@
-" Following lines added by drush vimrc-install on Mon, 24 Jun 2013 09:00:13 +0000.
 set nocompatible
-call pathogen#infect('~/.drush/vimrc/bundle')
-call pathogen#infect('~/.vim/bundle')
+filetype off                   " required!
+call pathogen#infect('~/.vim/bundle/{}')
 " End of vimrc-install additions.
 
-"call pathogen#infect()
-let g:syntastic_phpcs_conf=" --standard=Drupal --extensions=php,module,inc,install,test,profile,theme"
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 set background=dark
 syntax on
@@ -73,21 +72,12 @@ map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-autocmd FileType php set fileencoding=UTF-8
-autocmd FileType html set fileencoding=UTF-8
-autocmd FileType css set fileencoding=UTF-8
+"autocmd FileType php set fileencoding=UTF-8
+"autocmd FileType html set fileencoding=UTF-8
+"autocmd FileType css set fileencoding=UTF-8
 
 "autocmd vimenter * NERDTree
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-if has("autocmd")
-  " Drupal *.module and *.install files.
-  augroup module
-    autocmd BufRead,BufNewFile *.module set filetype=php
-    autocmd BufRead,BufNewFile *.install set filetype=php
-    autocmd BufRead,BufNewFile *.test set filetype=php
-  augroup END
-end
 
 " from https://github.com/spf13/spf13-vim/blob/master/.vimrc
 if has('statusline')
@@ -135,38 +125,31 @@ function! OpenPhpFunction (keyword)
   exe 'call search("User Contributed Notes")'
   exe 'norm dGgg'
 endfunction
-au FileType php map <c-K> :call OpenPhpFunction('<C-r><C-w>')<CR>
-
+au FileType php map <C-K> :call OpenPhpFunction('<C-r><C-w>')<CR>
 
 nnoremap <F3> :NumbersToggle<CR>
 
-
-source $HOME/.vim/drupal-vim/plugin/drupal.vim
-
-filetype off                   " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
 " let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'Valloric/YouCompleteMe'
-"Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'scrooloose/nerdcommenter'
-"Bundle 'joonty/vdebug.git'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'terryma/vim-smooth-scroll'
-Bundle 'terryma/vim-expand-region'
-Bundle 'mihaifm/vimpanel'
-Bundle 'sjl/gundo.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'bling/vim-airline'
-Bundle 'myusuf3/numbers.vim'
+" required!
+Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'scrooloose/nerdcommenter'
+"Plugin 'joonty/vdebug.git'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-smooth-scroll'
+Plugin 'terryma/vim-expand-region'
+Plugin 'mihaifm/vimpanel'
+Plugin 'sjl/gundo.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'myusuf3/numbers.vim'
 
-filetype plugin indent on     " required!
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
@@ -192,7 +175,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 25, 4)<CR>
 
 " Expand region settings
 map K <Plug>(expand_region_expand)
-map J <Plug>(expand_region_shrink)
+map L <Plug>(expand_region_shrink)
 
 " Vim airline settings
 let g:airline#extensions#tabline#enabled = 1
