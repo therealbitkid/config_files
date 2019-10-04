@@ -82,3 +82,7 @@ export PATH=:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 export SVN_EDITOR=vim
 
 # source ~/.zsh/git_prompt.zsh
+
+export HOMEBREW_GITHUB_API_TOKEN="1535b39c03dfdef8ef22d9fcecb638d01b3cec21"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
