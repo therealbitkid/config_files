@@ -3,20 +3,24 @@ filetype off                   " required!
 call pathogen#infect('~/.vim/bundle/{}')
 " End of vimrc-install additions.
 
+let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 set background=dark
 syntax on
 
-"if has("gui_running")
+if has("gui_running")
   let g:solarized_contrast = "high"
   let g:solarized_visibility= "high"
-"endif
+  colorscheme solarized
+  set guifont=Source\ Code\ Pro\ for\ Powerline:h13
+endif
 
-colorscheme solarized
-"set gfn=Source\ Code\ Pro\ for\ Powerline\ Light:h13
-set guifont=Source\ Code\ Pro\ for\ Powerline:h13
+if has("gui_vimr")
+  colorscheme NeoSolarized
+endif
 
 let mapleader = ","
 
@@ -41,8 +45,8 @@ set scrolloff=3
 set foldenable
 set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
 set history=1000
-set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+"set list
+"set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 set backupdir=/tmp//
 set directory=/tmp//
 set dir=/tmp//
@@ -75,6 +79,7 @@ map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 "autocmd FileType php set fileencoding=UTF-8
 "autocmd FileType html set fileencoding=UTF-8
 "autocmd FileType css set fileencoding=UTF-8
+"set encoding=utf-8
 
 "autocmd vimenter * NERDTree
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -134,10 +139,10 @@ nnoremap <F3> :NumbersToggle<CR>
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'joonty/vdebug.git'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'iCyMind/NeoSolarized'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'terryma/vim-expand-region'
@@ -146,6 +151,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'myusuf3/numbers.vim'
+Plugin 'airblade/vim-gitgutter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
