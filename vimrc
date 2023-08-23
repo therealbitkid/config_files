@@ -1,6 +1,6 @@
 set nocompatible
 filetype off                   " required!
-call pathogen#infect('~/.vim/bundle/{}')
+"call pathogen#infect('~/.vim/bundle/{}')
 " End of vimrc-install additions.
 
 let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
@@ -16,10 +16,8 @@ if has("gui_running")
   let g:solarized_visibility= "high"
   colorscheme solarized
   set guifont=Source\ Code\ Pro\ for\ Powerline:h13
-endif
-
-if has("gui_vimr")
-  colorscheme NeoSolarized
+else
+  colorscheme solarized
 endif
 
 let mapleader = ","
@@ -138,7 +136,7 @@ nnoremap <F3> :NumbersToggle<CR>
 " required!
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'joonty/vdebug.git'
 Plugin 'altercation/vim-colors-solarized'

@@ -1,9 +1,15 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Get the only language computers should speak
 export LANG=en_US
 export LC_ALL=en_US
 
-# Some programs honour this
-#export LC_PAPER=a4
+source ~/.zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 # Get termcolors
 source ~/.termcolors
@@ -78,11 +84,21 @@ zstyle -e ':completion:*:ssh:*' hosts 'reply=($(sed -e "/^#/d" -e "s/ .*\$//" -e
 # Completion so "cd ..<TAB>" -> "cd ../"
 # zstyle ':completion:*' special-dirs ..
 
-export PATH=:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:$PATH
-export SVN_EDITOR=vim
+export PATH=:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:$PATH
+export SVN_EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 
 # source ~/.zsh/git_prompt.zsh
 
-export HOMEBREW_GITHUB_API_TOKEN="1535b39c03dfdef8ef22d9fcecb638d01b3cec21"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+function lk {
+  cd "$(walk "$@")"
+}
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# 1Password
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
